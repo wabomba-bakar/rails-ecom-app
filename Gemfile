@@ -1,10 +1,24 @@
 source 'https://rubygems.org'
 
-
+# Heroku use ruby 2.3.3
+ruby '2.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+# sqlite3 for development and test database
+# Postgresql for production
+gem 'pg', group: :production
+
+# 12factor for heroku
+gem 'rails_12factor', group: :production
+
+# stripe for taking payment
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# paypal for taking payments
+gem 'activemerchant'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
